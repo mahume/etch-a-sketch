@@ -1,11 +1,16 @@
 import React from 'react';
+import Screen from '../Screen/index';
+import Knob from "../Knob/index";
 import { Main } from "./styles";
 
 const Body = () => {
   return (
-    <Main>
-      
-    </Main>
+    <>
+      <Main />
+      <Screen />
+      <Knob position="left" />
+      <Knob position="right" />
+    </>
   )
 }
 
