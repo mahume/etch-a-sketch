@@ -1,10 +1,11 @@
 import React from 'react';
+import Body from '../Body/index';
 import { Grid } from './styles';
 
 function App() {
   return (
     <Grid>
-      <h1>Etch a Sketch</h1>
+      <Body />
     </Grid>
   );
 }

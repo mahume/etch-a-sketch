@@ -1,5 +1,5 @@
 export const colorPalette = {
-  grayLight: '#e7ecef'
+  grayLight: '#e7ecef',
   gray: '#CBCBC8',
   grayDark: '#A4A5A0',
   redPale: '#f95854',
