@@ -5,9 +5,11 @@ export const Circle = styled.div`
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  border-right: 6px solid ${grays.midLight};
-  border-bottom: 6px solid ${grays.midLight};
-  background-color: ${grays.light};
+  border-top: 6px solid ${grays.light};
+  border-right: 6px solid ${grays.mid};
+  border-bottom: 6px solid ${grays.mid};
+  border-left: 6px solid ${grays.light};
+  background-color: ${grays.midLight};
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
 
   grid-row: 4 / 5;
