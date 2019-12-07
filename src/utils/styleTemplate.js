@@ -8,13 +8,6 @@ export const colorPalette = {
   gold: '#e3ab19',
 }
 
-const dimensions = {
-  screenWidth: 6.25,
-  screenHeight: 4.5,
-  bodyWidth: 9.1,
-  bodyHeight: 7.6,
-}
-
 export const reds = {
   dark: '#3D0003',
   darkMid: '#7C0005',
