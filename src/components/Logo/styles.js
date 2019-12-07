@@ -4,9 +4,12 @@ import { reds, golds } from '../../utils/styleTemplate';
 
 export const StyledLogo = styled(Logo)`
   width: 500px;
-  filter: drop-shadow(0px 2px 0.5px ${reds.darkMid});
+  filter: drop-shadow(0px 2px .5px ${reds.dark});
   g>g>text:first-child {
     fill: ${golds.light};
+  }
+  g>g>text:last-child {
+    fill: ${golds.mid};
   }
 
   grid-row: 2 / 3;
