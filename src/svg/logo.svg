@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810.52 172.66">
+    <defs>
+        <style>
+            .cls-1,.cls-2 {
+                font-size: 148.57px;
+                font-family: DessertScript, Dessert Script;
+            }
+            .cls-1 {
+                fill: #f7c74a;
+            }
+            .cls-2 {
+                fill: #e3ab19;
+            }
+        </style>
+    </defs>
+    <title>logo_1</title>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+            <text class="cls-1" transform="translate(0 125.98)">Etch A Sketch</text>
+            <text class="cls-2" transform="translate(1 128.98)">Etch A Sketch</text>
+        </g>
+    </g>
+</svg>
