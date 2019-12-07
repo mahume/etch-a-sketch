@@ -6,7 +6,7 @@ export const StyledLogo = styled(Logo)`
   width: 500px;
   filter: drop-shadow(0px 2px 0.5px ${reds.darkMid});
   g>g>text:first-child {
-    fill: ${golds.midLight};
+    fill: ${golds.light};
   }
 
   grid-row: 2 / 3;
