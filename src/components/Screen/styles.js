@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { reds, grays } from "../../utils/styleTemplate";
 
-export const Figcaption = styled.figcaption`
+export const StyledCanvas = styled.canvas`
+  height: ${({ height }) => height + 'px'};
+  width: ${({ width }) => width + 'px'};
   background: linear-gradient(${grays.darkMid}, ${grays.mid});
   border-top: 6px solid ${reds.dark};
   border-right: 6px solid ${reds.midLight};

@@ -8,7 +8,7 @@ Nostalgic mini app of everyone's favorite childhood toy.
 
 - React
 - Styled-components
-- HTML <canvas>
+- HTML Canvas
 
 ## Author
 
