@@ -1,40 +1,47 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { StyledCanvas } from "./styles";
-
-const width = 1274;
-const height = 924;
-const moveAmount = 10;
+import { grays } from "../../utils/styleTemplate";
 
 const Screen = () => {
   const ref = useRef();
-  const [coordinateX, setCoordinateX] = useState(Math.floor(Math.random() * width));
-  const [coordinateY, setCoordinateY] = useState(Math.floor(Math.random() * height));
+
+  const [dimensions, setDimensions] = useState({ x: 1274, y: 924 });
+  const [coordinateX, setCoordinateX] = useState(Math.floor(Math.random() * dimensions.x));
+  const [coordinateY, setCoordinateY] = useState(Math.floor(Math.random() * dimensions.y));
   const [direction, setDirection] = useState(null);
+  const [speed, setSpeed] = useState(5);
   
   useEffect(() => {
-    window.addEventListener('keydown', handleKey);
+    const handleKeyDown = e => {
+      if (e.key.includes('Arrow')) {
+        e.preventDefault();
+        setDirection(e.key);
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown);
 
     const canvas = ref.current;
     const ctx = canvas.getContext('2d');
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.lineWidth = 10;
+    ctx.lineWidth = 7;
+    ctx.strokeStyle = grays.dark;
     
     ctx.beginPath();
     ctx.moveTo(coordinateX, coordinateY);
 
     switch (direction) {
       case 'ArrowUp':
-        setCoordinateY(coordinateY - moveAmount);
+        setCoordinateY(coordinateY - speed);
         break;
       case 'ArrowDown':
-        setCoordinateY(coordinateY + moveAmount);
+        setCoordinateY(coordinateY + speed);
         break;
       case 'ArrowLeft':
-        setCoordinateX(coordinateX - moveAmount);
+        setCoordinateX(coordinateX - speed);
         break;
       case 'ArrowRight':
-        setCoordinateX(coordinateX + moveAmount);
+        setCoordinateX(coordinateX + speed);
         break;
       default:
         break;
@@ -45,22 +52,14 @@ const Screen = () => {
 
     setDirection(null);
     
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [coordinateX, coordinateY, direction])
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [coordinateX, coordinateY, direction, speed])
   
-  const handleKey = e => {
-    if (e.key.includes('Arrow')) {
-      e.preventDefault();
-      setDirection(e.key);
-    }
-  }
-
-
   return (
     <StyledCanvas 
       ref={ref} 
-      width={width} 
-      height={height}
+      width={dimensions.x} 
+      height={dimensions.y}
     />
   )
 }
