@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../Logo/index';
 import Screen from '../Screen/index';
 import Arrow from '../Arrow/index';
 import Knob from "../Knob/index";
@@ -8,6 +9,7 @@ const Body = () => {
   return (
     <>
       <Main />
+      <Logo />
       <Screen />
       <Arrow position="left" />
       <Arrow position="right" />
