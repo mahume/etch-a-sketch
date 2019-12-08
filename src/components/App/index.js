@@ -1,11 +1,11 @@
 import React from 'react';
-import Body from '../Body/index';
+import EtchASketch from '../EtchASketch/index';
 import { Grid } from './styles';
 
 function App() {
   return (
     <Grid>
-      <Body />
+      <EtchASketch />
     </Grid>
   );
 }

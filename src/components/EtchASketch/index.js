@@ -1,22 +1,23 @@
 import React from 'react';
+import { CoordinatesProvider } from '../../context/Coordinates';
 import Logo from '../Logo/index';
 import Screen from '../Screen/index';
 import Arrow from '../Arrow/index';
 import Knob from "../Knob/index";
-import { Main } from "./styles";
+import { Body } from "./styles";
 
-const Body = () => {
+const EtchASketch = () => {
   return (
-    <>
-      <Main />
+    <CoordinatesProvider>
+      <Body />
       <Logo />
       <Screen />
       <Arrow position="left" />
       <Arrow position="right" />
       <Knob position="left" />
       <Knob position="right" />
-    </>
+    </CoordinatesProvider>
   )
 }
 
-export default Body;
+export default EtchASketch;

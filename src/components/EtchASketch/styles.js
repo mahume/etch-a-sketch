@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { reds } from "../../utils/styleTemplate";
 
-export const Main = styled.main`
+export const Body = styled.main`
   background-color: ${reds.mid};
   border-top: 10px solid ${reds.light};
   border-right: 10px solid ${reds.darkMid};

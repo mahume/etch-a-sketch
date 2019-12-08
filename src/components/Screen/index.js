@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { CoordinatesContext } from '../../context/Coordinates';
 import { StyledCanvas } from "./styles";
 import { grays } from "../../utils/styleTemplate";
 
@@ -6,8 +7,7 @@ const Screen = () => {
   const ref = useRef();
 
   const [dimensions, setDimensions] = useState({ x: 1274, y: 924 });
-  const [coordinateX, setCoordinateX] = useState(Math.floor(Math.random() * dimensions.x));
-  const [coordinateY, setCoordinateY] = useState(Math.floor(Math.random() * dimensions.y));
+  const [coordinates, setCoordinates] = useContext(CoordinatesContext);
   const [directionX, setDirectionX] = useState(null);
   const [directionY, setDirectionY] = useState(null);
   const [speed, setSpeed] = useState(0.1);
@@ -43,37 +43,37 @@ const Screen = () => {
     ctx.strokeStyle = grays.dark;
     
     ctx.beginPath();
-    ctx.moveTo(coordinateX, coordinateY);
+    ctx.moveTo(coordinates.x, coordinates.y);
 
     switch (directionX) {
       case 'ArrowLeft':
-        setCoordinateX(coordinateX - speed);
+        setCoordinates({ ...coordinates, x: coordinates.x - speed });
         break;
       case 'ArrowRight':
-        setCoordinateX(coordinateX + speed);
+        setCoordinates({ ...coordinates, x: coordinates.x + speed });
         break;
       default:
         break;
     }
     switch (directionY) {
       case 'ArrowUp':
-        setCoordinateY(coordinateY - speed);
+        setCoordinates({ ...coordinates, y: coordinates.y - speed });
         break;
       case 'ArrowDown':
-        setCoordinateY(coordinateY + speed);
+        setCoordinates({ ...coordinates, y: coordinates.y + speed });
         break;
       default:
         break;
     }
 
-    ctx.lineTo(coordinateX, coordinateY);
+    ctx.lineTo(coordinates.x, coordinates.y);
     ctx.stroke();
     
     return () => {
       window.removeEventListener('keydown', handleKeyEvent);
       window.removeEventListener('keyup', handleKeyEvent);
     }
-  }, [coordinateX, coordinateY, directionX, directionY, speed])
+  }, [coordinates, coordinates.x, coordinates.y, directionX, directionY, setCoordinates, speed])
   
   return (
     <StyledCanvas 
