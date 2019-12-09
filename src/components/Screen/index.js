@@ -1,16 +1,22 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { CoordinatesContext } from '../../context/Coordinates';
 import { StyledCanvas } from "./styles";
 import { grays } from "../../utils/styleTemplate";
+import { 
+  DirectionXContext, 
+  DirectionYContext,
+  SpeedContext
+} from '../../context/Store';
+
+const width = 1274;
+const height = 924;
 
 const Screen = () => {
   const ref = useRef();
-
-  const [dimensions, setDimensions] = useState({ x: 1274, y: 924 });
-  const [coordinates, setCoordinates] = useContext(CoordinatesContext);
-  const [directionX, setDirectionX] = useState(null);
-  const [directionY, setDirectionY] = useState(null);
-  const [speed, setSpeed] = useState(0.1);
+  const [speed] = useContext(SpeedContext);
+  const [directionX, setDirectionX] = useContext(DirectionXContext);
+  const [directionY, setDirectionY] = useContext(DirectionYContext);
+  const [coordinateX, setCoordinateX] = useState(Math.floor(Math.random() * width));
+  const [coordinateY, setCoordinateY] = useState(Math.floor(Math.random() * height));
   
   useEffect(() => {
     const handleKeyEvent = e => {
@@ -43,43 +49,43 @@ const Screen = () => {
     ctx.strokeStyle = grays.dark;
     
     ctx.beginPath();
-    ctx.moveTo(coordinates.x, coordinates.y);
+    ctx.moveTo(coordinateX, coordinateY);
 
     switch (directionX) {
       case 'ArrowLeft':
-        setCoordinates({ ...coordinates, x: coordinates.x - speed });
+        setCoordinateX(coordinateX - speed);
         break;
       case 'ArrowRight':
-        setCoordinates({ ...coordinates, x: coordinates.x + speed });
+        setCoordinateX(coordinateX + speed);
         break;
       default:
         break;
     }
     switch (directionY) {
       case 'ArrowUp':
-        setCoordinates({ ...coordinates, y: coordinates.y - speed });
+        setCoordinateY(coordinateY - speed);
         break;
       case 'ArrowDown':
-        setCoordinates({ ...coordinates, y: coordinates.y + speed });
+        setCoordinateY(coordinateY + speed);
         break;
       default:
         break;
     }
 
-    ctx.lineTo(coordinates.x, coordinates.y);
+    ctx.lineTo(coordinateX, coordinateY);
     ctx.stroke();
     
     return () => {
       window.removeEventListener('keydown', handleKeyEvent);
       window.removeEventListener('keyup', handleKeyEvent);
     }
-  }, [coordinates, coordinates.x, coordinates.y, directionX, directionY, setCoordinates, speed])
+  }, [coordinateX, coordinateY, directionX, directionY, setDirectionX, setDirectionY, speed])
   
   return (
     <StyledCanvas 
       ref={ref} 
-      width={dimensions.x} 
-      height={dimensions.y}
+      width={width} 
+      height={height}
     />
   )
 }
