@@ -1,13 +1,5 @@
-const handleDraw = options => {
-  const { 
-    directionX, 
-    directionY,
-    coordinateX,
-    setCoordinateX, 
-    coordinateY,
-    setCoordinateY,
-    speed
-  } = options;
+const handleDraw = args => {
+  const { directionX, directionY, coordinateX, setCoordinateX, coordinateY, setCoordinateY, speed } = args;
 
   switch (directionX) {
     case 'ArrowLeft':

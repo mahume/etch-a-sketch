@@ -3,22 +3,16 @@ import handleDraw from '../../utils/handleDraw';
 import handleKeyEvent from '../../utils/handleKeyEvent';
 import { StyledCanvas } from "./styles";
 import { grays } from "../../utils/styleTemplate";
-import { 
-  DirectionXContext, 
-  DirectionYContext,
-  SpeedContext
-} from '../../context/Store';
-
-const width = 1274;
-const height = 924;
+import { DirectionXContext, DirectionYContext, SpeedContext } from '../../context/Store';
 
 const Screen = () => {
   const ref = useRef();
   const [speed] = useContext(SpeedContext);
   const [directionX, setDirectionX] = useContext(DirectionXContext);
   const [directionY, setDirectionY] = useContext(DirectionYContext);
-  const [coordinateX, setCoordinateX] = useState(Math.floor(Math.random() * width));
-  const [coordinateY, setCoordinateY] = useState(Math.floor(Math.random() * height));
+  const [dimensions] = useState({ x: 1274, y: 924 });
+  const [coordinateX, setCoordinateX] = useState(Math.floor(Math.random() * dimensions.x));
+  const [coordinateY, setCoordinateY] = useState(Math.floor(Math.random() * dimensions.y));
 
   useEffect(() => {
     const handleEvent = e => handleKeyEvent(e, setDirectionX, setDirectionY)
@@ -36,15 +30,7 @@ const Screen = () => {
     ctx.beginPath();
     ctx.moveTo(coordinateX, coordinateY);
 
-    handleDraw({
-      directionX, 
-      directionY, 
-      coordinateX,
-      setCoordinateX,
-      coordinateY,
-      setCoordinateY, 
-      speed
-    });
+    handleDraw({ directionX, directionY, coordinateX, setCoordinateX, coordinateY, setCoordinateY, speed });
 
     ctx.lineTo(coordinateX, coordinateY);
     ctx.stroke();
@@ -58,8 +44,8 @@ const Screen = () => {
   return (
     <StyledCanvas 
       ref={ref} 
-      width={width} 
-      height={height}
+      width={dimensions.x} 
+      height={dimensions.y}
     />
   )
 }

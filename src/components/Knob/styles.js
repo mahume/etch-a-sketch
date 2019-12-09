@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { grays } from "../../utils/styleTemplate";
+import { grays, reds } from "../../utils/styleTemplate";
 
 export const Circle = styled.div`
   width: 110px;
@@ -17,4 +17,11 @@ export const Circle = styled.div`
   grid-column-end: ${({ position }) => position === 'left' ? '3' : '5'};
   justify-self: ${({ position }) => position === 'right' ? 'start' : 'end'};
   align-self: center;
+`;
+
+export const Triangle = styled.div`
+  width: 110px;
+  height: 110px;
+  clip-path: circle(3% at 50% 13%);
+  background-color: ${reds.midLight};
 `;
