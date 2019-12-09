@@ -34,9 +34,10 @@ export const Marker = styled.div`
   clip-path: circle(3% at 50% 13%);
   background-color: ${reds.midLight};
 
-  animation: ${rotate} 1s linear;
-
-  &:hover {
-    background-color: black;
-  }
+  animation-name: ${rotate};
+  /* animation-direction: normal; */
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-direction: ${props => props.direction === 'ArrowLeft' ? 'reverse' : 'normal' };
+  /* animation-duration: ${({ direction }) => direction === 'ArrowLeft' ? '1s' : '0s'}; */
 `;
