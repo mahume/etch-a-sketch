@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
+import handleDraw from '../../utils/handleDraw';
+import handleKeyEvent from '../../utils/handleKeyEvent';
 import { StyledCanvas } from "./styles";
 import { grays } from "../../utils/styleTemplate";
 import { 
@@ -17,29 +19,12 @@ const Screen = () => {
   const [directionY, setDirectionY] = useContext(DirectionYContext);
   const [coordinateX, setCoordinateX] = useState(Math.floor(Math.random() * width));
   const [coordinateY, setCoordinateY] = useState(Math.floor(Math.random() * height));
-  
+
   useEffect(() => {
-    const handleKeyEvent = e => {
-      const { type, key, keyCode } = e;  
-      if (key.includes('Arrow')) {
-        e.preventDefault();
-        if (type === 'keydown') {
-          if (keyCode % 2) {
-            setDirectionX(key);
-          } else {
-            setDirectionY(key);
-          }
-        } else if (type === 'keyup') {
-          if (keyCode % 2) {
-            setDirectionX(null);
-          } else {
-            setDirectionY(null);
-          }
-        }
-      }
-    }
-    window.addEventListener('keydown', handleKeyEvent);
-    window.addEventListener('keyup', handleKeyEvent);    
+    const handleEvent = e => handleKeyEvent(e, setDirectionX, setDirectionY)
+
+    window.addEventListener('keydown', handleEvent);
+    window.addEventListener('keyup', handleEvent);    
 
     const canvas = ref.current;
     const ctx = canvas.getContext('2d');
@@ -51,33 +36,22 @@ const Screen = () => {
     ctx.beginPath();
     ctx.moveTo(coordinateX, coordinateY);
 
-    switch (directionX) {
-      case 'ArrowLeft':
-        setCoordinateX(coordinateX - speed);
-        break;
-      case 'ArrowRight':
-        setCoordinateX(coordinateX + speed);
-        break;
-      default:
-        break;
-    }
-    switch (directionY) {
-      case 'ArrowUp':
-        setCoordinateY(coordinateY - speed);
-        break;
-      case 'ArrowDown':
-        setCoordinateY(coordinateY + speed);
-        break;
-      default:
-        break;
-    }
+    handleDraw({
+      directionX, 
+      directionY, 
+      coordinateX,
+      setCoordinateX,
+      coordinateY,
+      setCoordinateY, 
+      speed
+    });
 
     ctx.lineTo(coordinateX, coordinateY);
     ctx.stroke();
     
     return () => {
-      window.removeEventListener('keydown', handleKeyEvent);
-      window.removeEventListener('keyup', handleKeyEvent);
+      window.removeEventListener('keydown', handleEvent);
+      window.removeEventListener('keyup', handleEvent);
     }
   }, [coordinateX, coordinateY, directionX, directionY, setDirectionX, setDirectionY, speed])
   
