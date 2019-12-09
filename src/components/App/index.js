@@ -1,11 +1,14 @@
 import React from 'react';
-import Body from '../Body/index';
+import Store from '../../context/Store';
+import EtchASketch from '../EtchASketch/index';
 import { Grid } from './styles';
 
 function App() {
   return (
     <Grid>
-      <Body />
+      <Store>
+        <EtchASketch />
+      </Store>
     </Grid>
   );
 }
