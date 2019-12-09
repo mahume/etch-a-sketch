@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { grays, reds } from "../../utils/styleTemplate";
 
 export const Circle = styled.div`
@@ -19,9 +19,24 @@ export const Circle = styled.div`
   align-self: center;
 `;
 
-export const Triangle = styled.div`
-  width: 110px;
-  height: 110px;
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const Marker = styled.div`
+  width: 100%;
+  height: 100%;
   clip-path: circle(3% at 50% 13%);
   background-color: ${reds.midLight};
+
+  animation: ${rotate} 1s linear;
+
+  &:hover {
+    background-color: black;
+  }
 `;

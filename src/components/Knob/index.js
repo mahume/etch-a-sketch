@@ -1,10 +1,10 @@
 import React from 'react';
-import { Circle, Triangle } from "./styles";
+import { Circle, Marker } from "./styles";
 
-const Knob = ({ position }) => {
+const Knob = ({ position, direction }) => {
   return (
     <Circle position={position}>
-      <Triangle />
+      <Marker direction={direction} />
     </Circle>
   )
 }
