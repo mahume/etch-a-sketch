@@ -31,3 +31,8 @@ export const grays = {
   midLight: '#E3E3E0',
   light: '#F7F7F7',
 }
+
+export const screen = {
+  height: 450,
+  width: 625
+}

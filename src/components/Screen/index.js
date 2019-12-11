@@ -11,7 +11,7 @@ const Screen = () => {
   const [speed] = useContext(SpeedContext);
   const [degreeX, setDegreeX] = useContext(DegreeXContext);
   const [degreeY, setDegreeY] = useContext(DegreeYContext);
-  const [dimensions] = useState({ x: 1274, y: 924 });
+  const [dimensions] = useState({ x: 1300, y: 900 });
   const [directionX, setDirectionX] = useState(null);
   const [directionY, setDirectionY] = useState(null);
   const [coordinateX, setCoordinateX] = useState(Math.floor(Math.random() * dimensions.x));
@@ -43,12 +43,12 @@ const Screen = () => {
       window.removeEventListener('keydown', handleKeyEvent);
       window.removeEventListener('keyup', handleKeyEvent);
     }
-  }, [coordinateX, coordinateY, degreeX, degreeY, directionX, directionY, setDegreeX, setDegreeY, setDirectionX, setDirectionY, speed])
+  }, [coordinateX, coordinateY, degreeX, degreeY, directionX, directionY, setDegreeX, setDegreeY, speed])
   
   return (
     <StyledCanvas 
-      ref={ref} 
-      width={dimensions.x} 
+      ref={ref}
+      width={dimensions.x}
       height={dimensions.y}
     />
   )

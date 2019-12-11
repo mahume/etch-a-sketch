@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { DegreeXContext, DegreeYContext } from '../../context/Store';
+import SettingsCard from '../SettingsCard/index';
 import Logo from '../Logo/index';
 import Screen from '../Screen/index';
 import Arrow from '../Arrow/index';
@@ -12,6 +13,7 @@ const EtchASketch = () => {
 
   return (
     <>
+      <SettingsCard />
       <Body />
       <Logo />
       <Screen />
