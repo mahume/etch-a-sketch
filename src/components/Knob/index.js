@@ -1,10 +1,12 @@
 import React from 'react';
 import { Circle, Marker } from "./styles";
 
-const Knob = ({ position, direction }) => (
+const Knob = ({ position, degree }) => {
+  return (
     <Circle position={position}>
-      <Marker direction={direction} />
+      <Marker style={{ transform: `rotate(${degree}deg)` }} />
     </Circle>
-)
+  )
+}
 
 export default Knob;
