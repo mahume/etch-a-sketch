@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { grays, reds } from "../../utils/styleTemplate";
 
 export const Circle = styled.div`
@@ -24,8 +24,5 @@ export const Marker = styled.div`
   height: 100%;
   clip-path: circle(3% at 50% 13%);
   background-color: ${reds.midLight};
-
   transform-origin: center;
-  transform: rotate(90deg);
-  transition: all 0.05s;
 `;

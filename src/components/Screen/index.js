@@ -1,24 +1,28 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import handleDraw from '../../utils/handleDraw';
-import handleKeyEvent from '../../utils/handleKeyEvent';
 import { StyledCanvas } from "./styles";
 import { grays } from "../../utils/styleTemplate";
-import { DirectionXContext, DirectionYContext, SpeedContext } from '../../context/Store';
+import { DegreeXContext, DegreeYContext, SpeedContext } from '../../context/Store';
+import handleDraw from '../../utils/handleDraw';
+import handleArrowDirection from '../../utils/handleArrowDirection';
+import handleDegree from '../../utils/handleDegree';
 
 const Screen = () => {
   const ref = useRef();
   const [speed] = useContext(SpeedContext);
-  const [directionX, setDirectionX] = useContext(DirectionXContext);
-  const [directionY, setDirectionY] = useContext(DirectionYContext);
+  const [degreeX, setDegreeX] = useContext(DegreeXContext);
+  const [degreeY, setDegreeY] = useContext(DegreeYContext);
   const [dimensions] = useState({ x: 1274, y: 924 });
+  const [directionX, setDirectionX] = useState(null);
+  const [directionY, setDirectionY] = useState(null);
   const [coordinateX, setCoordinateX] = useState(Math.floor(Math.random() * dimensions.x));
   const [coordinateY, setCoordinateY] = useState(Math.floor(Math.random() * dimensions.y));
-
+  
   useEffect(() => {
-    const handleEvent = e => handleKeyEvent(e, setDirectionX, setDirectionY)
-
-    window.addEventListener('keydown', handleEvent);
-    window.addEventListener('keyup', handleEvent);    
+    const handleKeyEvent = e => handleArrowDirection(e, setDirectionX, setDirectionY)
+    handleDegree({ speed, directionX, directionY, degreeX, setDegreeX, degreeY, setDegreeY });
+    
+    window.addEventListener('keydown', handleKeyEvent);
+    window.addEventListener('keyup', handleKeyEvent); 
 
     const canvas = ref.current;
     const ctx = canvas.getContext('2d');
@@ -36,10 +40,10 @@ const Screen = () => {
     ctx.stroke();
     
     return () => {
-      window.removeEventListener('keydown', handleEvent);
-      window.removeEventListener('keyup', handleEvent);
+      window.removeEventListener('keydown', handleKeyEvent);
+      window.removeEventListener('keyup', handleKeyEvent);
     }
-  }, [coordinateX, coordinateY, directionX, directionY, setDirectionX, setDirectionY, speed])
+  }, [coordinateX, coordinateY, degreeX, degreeY, directionX, directionY, setDegreeX, setDegreeY, setDirectionX, setDirectionY, speed])
   
   return (
     <StyledCanvas 

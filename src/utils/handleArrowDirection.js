@@ -1,6 +1,5 @@
-const handleKeyEvent = (e, setDirectionX, setDirectionY) => {
+const handleArrowDirection = (e, setDirectionX, setDirectionY) => {
   const { type, key, keyCode } = e;  
-  
   if (key.includes('Arrow')) {
     e.preventDefault();
     if (type === 'keydown') {
@@ -19,4 +18,4 @@ const handleKeyEvent = (e, setDirectionX, setDirectionY) => {
   }
 }
 
-export default handleKeyEvent;
+export default handleArrowDirection;
