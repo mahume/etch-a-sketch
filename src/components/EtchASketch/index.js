@@ -4,6 +4,7 @@ import SettingsCard from '../SettingsCard/index';
 import Logo from '../Logo/index';
 import Screen from '../Screen/index';
 import Arrow from '../Arrow/index';
+import Cog from '../Cog/index';
 import Knob from "../Knob/index";
 import { Body } from "./styles";
 
@@ -16,6 +17,7 @@ const EtchASketch = () => {
       <SettingsCard />
       <Body />
       <Logo />
+      <Cog />
       <Screen />
       <Arrow position="left" />
       <Arrow position="right" />
