@@ -4,7 +4,11 @@ import { reds } from '../../utils/styleTemplate';
 
 export const StyledCog = styled(Cog)`
   width: 50px;
-  filter: drop-shadow(0px 1px 0.5px ${reds.darkMid});
+  cursor: pointer;
+  filter: ${({ isViewable }) => isViewable
+    ? `drop-shadow(0px -2px 0.5px ${reds.darkMid})`
+    : `drop-shadow(0px 2px 0.5px ${reds.darkMid})`};
+  
   g>g>circle {
     fill: ${reds.midLight};
   }
