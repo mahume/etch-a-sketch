@@ -6,7 +6,7 @@ export const StyledCog = styled(Cog)`
   width: 50px;
   filter: drop-shadow(0px 1px 0.5px ${reds.darkMid});
   g>g>circle {
-    fill: ${reds.darkMid};
+    fill: ${reds.midLight};
   }
 
   grid-row: 3 / 4;

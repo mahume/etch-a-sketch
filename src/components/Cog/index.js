@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyledCog } from './styles';
+import { IsViewableContext } from '../../context/Store';
 
 const Cog = () => {
-  return <StyledCog />
+  const [isViewable, setIsViewable] = useContext(IsViewableContext);
+
+  return <StyledCog onClick={() => setIsViewable(!isViewable)} />
 }
 
 export default Cog;
