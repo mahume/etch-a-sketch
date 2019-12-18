@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { grays } from '../../utils/styleTemplate';
 
 export const Canvas = styled.div`
@@ -12,16 +12,15 @@ export const Canvas = styled.div`
   transition-duration: 500ms;
   transition-timing-function: ease-out;
 
-
   grid-row: 3 / 4;
   grid-column: 1 / 2;
   justify-self: end;
 `;
 
 export const Settings = styled.h1`
-  margin-top: 20px;
+  margin: 25px 0px 0px 100px;
   color: white;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 `;
