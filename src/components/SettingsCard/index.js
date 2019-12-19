@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Canvas, StyledRainbow, StyledGraybow } from './styles';
+import { Canvas, StyledRainbow, StyledGraybow, StyledEraser } from './styles';
 import { IsViewableContext, IsColoredContext } from '../../context/Store'
 
 const SettingsCard = () => {
@@ -13,6 +13,7 @@ const SettingsCard = () => {
           ? <StyledRainbow onClick={() => setIsColored(!isColored)} /> 
           : <StyledGraybow onClick={() => setIsColored(!isColored)} />
       }
+      <StyledEraser />
     </Canvas>
   )
 }
