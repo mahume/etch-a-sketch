@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { ReactComponent as Rainbow } from '../../svg/rainbow.svg';
 import { grays } from '../../utils/styleTemplate';
 
 export const Canvas = styled.div`
-  width: ${({ isViewable }) => isViewable ? '300px' : '0px'};
+  width: ${({ isViewable }) => isViewable ? '100px' : '0px'};
   background: linear-gradient(${grays.darkMid}, ${grays.midLight});
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   border-top-left-radius: 30px;
@@ -17,10 +18,13 @@ export const Canvas = styled.div`
   justify-self: end;
 `;
 
-export const Settings = styled.h1`
-  margin: 25px 0px 0px 100px;
-  color: white;
+export const StyledRainbow = styled(Rainbow)`
+  width: 50px;
+
+  g>g>path.cls-2 {
+    fill: #ff931e;
+  }
 
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
 `;

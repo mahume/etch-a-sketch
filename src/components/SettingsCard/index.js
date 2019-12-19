@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Canvas, Settings } from './styles';
+import { Canvas, StyledRainbow } from './styles';
 import { IsViewableContext } from '../../context/Store'
 
 const SettingsCard = () => {
@@ -7,7 +7,7 @@ const SettingsCard = () => {
 
   return (
     <Canvas isViewable={isViewable} >
-      <Settings>Settings</Settings>
+      <StyledRainbow />
     </Canvas>
   )
 }
