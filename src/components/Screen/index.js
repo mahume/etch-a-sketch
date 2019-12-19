@@ -1,13 +1,21 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { StyledCanvas } from "./styles";
 import { grays } from "../../utils/styleTemplate";
-import { DegreeXContext, DegreeYContext, SpeedContext } from '../../context/Store';
 import handleDraw from '../../utils/handleDraw';
 import handleArrowDirection from '../../utils/handleArrowDirection';
 import handleDegree from '../../utils/handleDegree';
+import { 
+  DegreeXContext, 
+  DegreeYContext, 
+  SpeedContext,
+  IsColoredContext,
+  HueContext,
+} from '../../context/Store';
 
 const Screen = () => {
   const ref = useRef();
+  const [hue, setHue] = useContext(HueContext);
+  const [isColored] = useContext(IsColoredContext);
   const [speed] = useContext(SpeedContext);
   const [degreeX, setDegreeX] = useContext(DegreeXContext);
   const [degreeY, setDegreeY] = useContext(DegreeYContext);
@@ -29,12 +37,15 @@ const Screen = () => {
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     ctx.lineWidth = 7;
-    ctx.strokeStyle = grays.dark;
+
+    isColored
+      ? ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
+      : ctx.strokeStyle = grays.dark;
     
     ctx.beginPath();
     ctx.moveTo(coordinateX, coordinateY);
 
-    handleDraw({ directionX, directionY, coordinateX, setCoordinateX, coordinateY, setCoordinateY, speed });
+    handleDraw({ directionX, directionY, coordinateX, setCoordinateX, coordinateY, setCoordinateY, hue, setHue, speed });
 
     ctx.lineTo(coordinateX, coordinateY);
     ctx.stroke();
@@ -43,7 +54,7 @@ const Screen = () => {
       window.removeEventListener('keydown', handleKeyEvent);
       window.removeEventListener('keyup', handleKeyEvent);
     }
-  }, [coordinateX, coordinateY, degreeX, degreeY, directionX, directionY, setDegreeX, setDegreeY, speed])
+  }, [coordinateX, coordinateY, degreeX, degreeY, directionX, directionY, hue, isColored, setDegreeX, setDegreeY, setHue, speed])
   
   return (
     <StyledCanvas 

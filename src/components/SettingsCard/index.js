@@ -1,13 +1,18 @@
 import React, { useContext } from 'react';
-import { Canvas, Settings } from './styles';
-import { IsViewableContext } from '../../context/Store'
+import { Canvas, StyledRainbow, StyledGraybow } from './styles';
+import { IsViewableContext, IsColoredContext } from '../../context/Store'
 
 const SettingsCard = () => {
   const [isViewable] = useContext(IsViewableContext);
+  const [isColored, setIsColored] = useContext(IsColoredContext);
 
   return (
     <Canvas isViewable={isViewable} >
-      <Settings>Settings</Settings>
+      {
+        isColored
+          ? <StyledRainbow onClick={() => setIsColored(!isColored)} /> 
+          : <StyledGraybow onClick={() => setIsColored(!isColored)} />
+      }
     </Canvas>
   )
 }
