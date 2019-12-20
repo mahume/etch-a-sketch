@@ -6,6 +6,7 @@ export const SpeedContext = createContext(0.1);
 export const HueContext = createContext(0);
 export const IsColoredContext = createContext(false);
 export const IsViewableContext = createContext(false);
+export const IsErasedContext = createContext(false);
 
 const Store = ({ children }) => {
   const [degreeX, setDegreeX] = useState(0);
@@ -14,6 +15,7 @@ const Store = ({ children }) => {
   const [hue, setHue] = useState(0);
   const [isColored, setIsColored] = useState(false);
   const [isViewable, setIsViewable] = useState(false);
+  const [isErased, setIsErased] = useState(false);
   
   return (
     <DegreeXContext.Provider value={[degreeX, setDegreeX]}>
@@ -22,7 +24,9 @@ const Store = ({ children }) => {
           <HueContext.Provider value={[hue, setHue]}>
             <IsColoredContext.Provider value={[isColored, setIsColored]}>
               <IsViewableContext.Provider value={[isViewable, setIsViewable]}>
-                {children}
+                <IsErasedContext.Provider value={[isErased, setIsErased]}>
+                  {children}
+                </IsErasedContext.Provider>
               </IsViewableContext.Provider>
             </IsColoredContext.Provider>
           </HueContext.Provider>

@@ -4,11 +4,19 @@ const shake = keyframes`
   0% {
     transform: rotate(0deg);
   }
-  25% {
+  20% {
     transform: rotate(10deg);
-    translate: 5% -5%;
+    translate: 10% -5%;
   }
-  50% {
+  40% {
+    transform: rotate(-10deg);
+    translate: -5% 5%;
+  }
+  60% {
+    transform: rotate(10deg);
+    translate: 10% -5%;
+  }
+  80% {
     transform: rotate(-10deg);
     translate: -5% 5%;
   }
@@ -34,9 +42,9 @@ export const Grid = styled.div`
   width: 100vw;
   height: 100vh;
 
-  animation-name: ${shake};
-  animation-duration: 1s;
-  animation-iteration-count: 2;
+  animation-name: ${(props) => props.isErased ? shake : 'none'};
+  animation-duration: 750ms;
+  animation-iteration-count: 1;
   
   display: grid;
   grid-template-columns: 1fr 143px 625px 143px 1fr;
