@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as Rainbow } from '../../svg/rainbow.svg';
 import { ReactComponent as Graybow } from '../../svg/graybow.svg';
+import { ReactComponent as Eraser } from '../../svg/eraser.svg';
 import { grays } from '../../utils/styleTemplate';
 
 export const Canvas = styled.div`
@@ -19,12 +20,12 @@ export const Canvas = styled.div`
   justify-self: end;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 `;
 
 export const StyledRainbow = styled(Rainbow)`
   width: 50px;
   margin-left: 25px;
-  margin-top: 25px;
   cursor: pointer;
 
   g>g>path.cls-2 {
@@ -44,7 +45,6 @@ export const StyledRainbow = styled(Rainbow)`
 export const StyledGraybow = styled(Graybow)`
   width: 50px;
   margin-left: 25px;
-  margin-top: 25px;
   cursor: pointer;
 
   g>g>path.cls-1 {
@@ -53,4 +53,10 @@ export const StyledGraybow = styled(Graybow)`
   g>g>path.cls-2 {
     fill: #7c7c80;
   }
+`;
+
+export const StyledEraser = styled(Eraser)`
+  width: 60px;
+  margin-left: 25px;
+  cursor: pointer;
 `;
