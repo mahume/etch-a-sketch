@@ -1,20 +1,20 @@
 import React, { useContext } from 'react';
-import Store from '../../context/Store';
+import Store, { IsErasedContext } from '../../context/Store';
 import EtchASketch from '../EtchASketch/index';
 import { GlobalStyles, Grid } from './styles';
-import { IsErasedContext } from '../../context/Store';
 
 function App() {
+  // TypeError: Invalid attempt to destructure non-iterable instance
   const [isErased] = useContext(IsErasedContext);
 
   return (
     <>
       <GlobalStyles />
-      <Grid>
-        <Store>
+      <Store>
+        <Grid>
           <EtchASketch />
-        </Store>
-      </Grid>
+        </Grid>
+      </Store>
     </>
   );
 }
