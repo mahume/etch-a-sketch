@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
 import { Canvas, StyledRainbow, StyledGraybow, StyledEraser } from './styles';
-import { IsViewableContext, IsColoredContext, IsErasedContext } from '../../context/Store'
-import handleErase from '../../utils/handleErase';
+import { IsViewableContext, IsColoredContext } from '../../context/Store'
 
 const SettingsCard = () => {
   const [isViewable] = useContext(IsViewableContext);
   const [isColored, setIsColored] = useContext(IsColoredContext);
-  const [isErased, setIsErased] = useContext(IsErasedContext);
 
   return (
     <Canvas isViewable={isViewable} >
@@ -15,7 +13,7 @@ const SettingsCard = () => {
           ? <StyledRainbow onClick={() => setIsColored(!isColored)} /> 
           : <StyledGraybow onClick={() => setIsColored(!isColored)} />
       }
-      <StyledEraser onClick={() => handleErase(isErased, setIsErased)} />
+      <StyledEraser />
     </Canvas>
   )
 }
