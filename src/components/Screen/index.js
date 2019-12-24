@@ -10,6 +10,7 @@ import {
   SpeedContext,
   IsColoredContext,
   HueContext,
+  IsErasedContext,
 } from '../../context/Store';
 
 const Screen = () => {
@@ -19,6 +20,7 @@ const Screen = () => {
   const [speed] = useContext(SpeedContext);
   const [degreeX, setDegreeX] = useContext(DegreeXContext);
   const [degreeY, setDegreeY] = useContext(DegreeYContext);
+  const [isErased] = useContext(IsErasedContext);
   const [dimensions] = useState({ x: 1300, y: 900 });
   const [directionX, setDirectionX] = useState(null);
   const [directionY, setDirectionY] = useState(null);
@@ -41,6 +43,10 @@ const Screen = () => {
     isColored
       ? ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
       : ctx.strokeStyle = grays.dark;
+
+    if (isErased) {
+      ctx.clearRect(0, 0, dimensions.x, dimensions.y);
+    }
     
     ctx.beginPath();
     ctx.moveTo(coordinateX, coordinateY);
@@ -54,7 +60,7 @@ const Screen = () => {
       window.removeEventListener('keydown', handleKeyEvent);
       window.removeEventListener('keyup', handleKeyEvent);
     }
-  }, [coordinateX, coordinateY, degreeX, degreeY, directionX, directionY, hue, isColored, setDegreeX, setDegreeY, setHue, speed])
+  }, [coordinateX, coordinateY, degreeX, degreeY, dimensions.x, dimensions.y, directionX, directionY, hue, isColored, isErased, setDegreeX, setDegreeY, setHue, speed])
   
   return (
     <StyledCanvas 
