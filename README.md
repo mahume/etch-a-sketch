@@ -8,8 +8,11 @@ Nostalgic mini app of everyone's favorite childhood toy.
 
 ![Etch a Sketch](public/main.png)
 
-- Change stylus color
-- Erase screen
+- Stylus
+  - Gray
+  - Rainbow
+- Speed (Coming soon)
+- Eraser
 
 ## Built With
 
