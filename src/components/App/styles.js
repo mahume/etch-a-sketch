@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const shake = keyframes`
   0% {
@@ -22,19 +22,6 @@ const shake = keyframes`
   }
   100% {
     transform: rotate(0deg);
-  }
-`;
-
-export const GlobalStyles = createGlobalStyle`
-  html {
-      box-sizing: border-box;
-  }
-  *, *:before, *:after {
-      box-sizing: inherit;
-  }
-  body {
-      margin: 0;
-      font-family: monospace;
   }
 `;
 

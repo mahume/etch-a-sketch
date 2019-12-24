@@ -1,18 +1,15 @@
-import React from 'react';
-import Store from '../../context/Store';
+import React, { useContext } from 'react';
 import EtchASketch from '../EtchASketch/index';
-import { GlobalStyles, Grid } from './styles';
+import { IsErasedContext } from '../../context/Store';
+import { Grid } from './styles';
 
 function App() {
+  const [isErased] = useContext(IsErasedContext);
+
   return (
-    <>
-      <GlobalStyles />
-      <Grid>
-        <Store>
-          <EtchASketch />
-        </Store>
-      </Grid>
-    </>
+    <Grid isErased={isErased} >
+        <EtchASketch />
+    </Grid>
   );
 }
 
