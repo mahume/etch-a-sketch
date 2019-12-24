@@ -1,12 +1,12 @@
 # Etch A Sketch
 
-![Etch a Sketch](public/main.png)
-
 ## About
 
 Nostalgic mini app of everyone's favorite childhood toy.
 
 ## Features
+
+![Etch a Sketch](public/main.png)
 
 - Change stylus color
 - Erase screen
