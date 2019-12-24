@@ -11,6 +11,11 @@ const SettingsCard = () => {
   const [isColored, setIsColored] = useContext(IsColoredContext);
   const [isErased, setIsErased] = useContext(IsErasedContext);
 
+  const eraseTimeout = () => {
+    setIsErased(true);
+    setTimeout(() => setIsErased(false), 650);
+  }
+
   return (
     <Canvas isViewable={isViewable} >
       {
@@ -18,7 +23,7 @@ const SettingsCard = () => {
           ? <StyledRainbow onClick={() => setIsColored(!isColored)} /> 
           : <StyledGraybow onClick={() => setIsColored(!isColored)} />
       }
-      <StyledEraser onClick={() => setIsErased(!isErased)} />
+      <StyledEraser onClick={eraseTimeout} />
     </Canvas>
   )
 }

@@ -6,7 +6,7 @@ const shake = keyframes`
   }
   20% {
     transform: rotate(10deg);
-    translate: 10% -5%;
+    translate: 5% -5%;
   }
   40% {
     transform: rotate(-10deg);
@@ -14,7 +14,7 @@ const shake = keyframes`
   }
   60% {
     transform: rotate(10deg);
-    translate: 10% -5%;
+    translate: 5% -5%;
   }
   80% {
     transform: rotate(-10deg);
@@ -30,7 +30,7 @@ export const Grid = styled.div`
   height: 100vh;
 
   animation-name: ${({ isErased }) => isErased ? shake : 'none' };
-  animation-duration: 750ms;
+  animation-duration: 650ms;
   animation-iteration-count: 1;
 
   display: grid;
