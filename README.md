@@ -10,10 +10,13 @@ Nostalgic mini app of everyone's favorite childhood toy.
 
 ![Etch a Sketch](public/etch-a-sketch.png)
 
+- Speedometer
+  - Slow
+  - Medium
+  - Fast
 - Stylus
   - Gray
   - Rainbow
-- Speed (Coming soon)
 - Eraser
 
 ## Built With
