@@ -3,6 +3,7 @@
 ## About
 
 Nostalgic mini app of everyone's favorite childhood toy.
+
 [Have a go!](https://mahume.github.io/etch-a-sketch)
 
 ## Features
