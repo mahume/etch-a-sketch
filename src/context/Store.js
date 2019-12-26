@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react';
 
 export const DegreeXContext = createContext(0);
 export const DegreeYContext = createContext(0);
-export const SpeedContext = createContext(0.1);
+export const SpeedContext = createContext(0.5);
 export const HueContext = createContext(0);
 export const IsColoredContext = createContext(false);
 export const IsViewableContext = createContext(false);
