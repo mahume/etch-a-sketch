@@ -19,6 +19,7 @@ const Speedometer = () => {
   return (
     <StyledSpeedometer 
       onClick={toggleSpeed}
+      speed={speed}
     />
   )
 }
