@@ -8,10 +8,6 @@ export const StyledCog = styled(Cog)`
   filter: ${({ isViewable }) => isViewable
     ? `drop-shadow(0px -2px 0.5px ${reds.darkMid})`
     : `drop-shadow(0px 2px 0.5px ${reds.darkMid})`};
-  
-  g>g>circle {
-    fill: ${reds.midLight};
-  }
 
   grid-row: 3 / 4;
   grid-column: 2 / 3;
