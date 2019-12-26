@@ -1,29 +1,23 @@
 import React, { useContext } from 'react';
-import { Canvas, StyledRainbow, StyledGraybow, StyledEraser } from './styles';
-import { 
-  IsViewableContext, 
-  IsColoredContext,
-  IsErasedContext
-} from '../../context/Store'
+import Rainbow from '../Rainbow/index';
+import Graybow from '../Graybow/index';
+import Speedometer from '../Speedometer/index';
+import Eraser from '../Eraser/index';
+import { Canvas } from './styles';
+import { IsViewableContext, IsColoredContext } from '../../context/Store'
 
 const SettingsCard = () => {
   const [isViewable] = useContext(IsViewableContext);
-  const [isColored, setIsColored] = useContext(IsColoredContext);
-  const [isErased, setIsErased] = useContext(IsErasedContext);
-
-  const eraseTimeout = () => {
-    setIsErased(true);
-    setTimeout(() => setIsErased(false), 650);
-  }
+  const [isColored] = useContext(IsColoredContext);
 
   return (
     <Canvas isViewable={isViewable} >
-      {
-        isColored
-          ? <StyledRainbow onClick={() => setIsColored(!isColored)} /> 
-          : <StyledGraybow onClick={() => setIsColored(!isColored)} />
+      <Speedometer />
+      {isColored
+          ? <Rainbow /> 
+          : <Graybow />
       }
-      <StyledEraser onClick={eraseTimeout} />
+      <Eraser />
     </Canvas>
   )
 }
