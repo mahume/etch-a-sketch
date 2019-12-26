@@ -8,7 +8,7 @@ Nostalgic mini app of everyone's favorite childhood toy.
 
 ## Features
 
-![Etch a Sketch](public/main.png)
+![Etch a Sketch](public/etch-a-sketch.png)
 
 - Stylus
   - Gray
